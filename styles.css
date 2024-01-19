@@ -1,5 +1,5 @@
 .content-wrapper {
-    max-width: 800px;
+    max-width: 1000px;
     margin: auto;
     padding: 20px;
 }
@@ -81,10 +81,10 @@
 }
 
 .result-card-header .importance-info {
+    font-size: 0.9em; /* Slightly smaller than the simulation info */
     font-style: italic;
-    font-weight: normal; /* This is default and can be omitted */
-    margin: 0; /* Ensures there's no extra space around the paragraph */
-}
+    margin-top: 5px; /* Adds some space between the lines */
+  }
 
 /* Specific styling for strong and em tags inside the header */
 .result-card-header strong {
@@ -144,16 +144,28 @@ label, input, select, button {
 table {
     width: 100%;
     border-collapse: collapse;
+    text-align: left;
+
 }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
 
 th {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+td {
+  padding: 8px;
+  text-align: right; /* Right-align numeric values */
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9; /* Zebra striping for rows */
+}
+
+td:first-child,
+th:first-child {
+  text-align: left; /* Align scenario text to the left */
 }
 
 #summary {
