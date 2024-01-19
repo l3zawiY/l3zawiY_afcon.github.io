@@ -46,6 +46,13 @@ function initializeDropdowns() {
             console.log("Team B points after selection:", selectedTeam['Total Points']); // Log the points
         }
     });
+
+    // Programmatically trigger the 'change' event for the first team
+    if (teamData.length > 0) {
+        teamADropdown.dispatchEvent(new Event('change'));
+        teamBDropdown.dispatchEvent(new Event('change'));
+    }
+    
 }
 
 
@@ -130,29 +137,46 @@ function getScenarioFull(scenarioKey, teamAName, teamBName) {
 
 // Function to perform the calculation and display the results
 function performCalculation() {
-    // Retrieve selected team names and points
+    // Retrieve selected team names
     var teamAName = document.getElementById('teamADropdown').value;
-    var teamAPointsInput = parseFloat(document.getElementById('teamAPoints').value); // Define this variable
     var teamBName = document.getElementById('teamBDropdown').value;
-    var teamBPointsInput = parseFloat(document.getElementById('teamBPoints').value); // Define this variable
 
-    var teamAPoints = parseFloat(teamAPointsInput.value); // Use the defined variable
-    var teamBPoints = parseFloat(teamBPointsInput.value); // Use the defined variable
+    // Check if both selected teams are the same    
+    var errorMessageDiv = document.getElementById('error-message');
+    errorMessageDiv.textContent = ''; // Clear any previous error message
+    if (teamAName === teamBName) {
+        console.log("Same team");
+        errorMessageDiv.textContent = "Error: The same team cannot play against itself.";
+        return; // Exit the function if the same team is selected
+    }
 
-    var matchType = document.getElementById('matchType').value; // Assuming this is still manually entered or selected
+    // Define the variables for team points and parse them as floats from the input fields
+    var teamAPointsInput = document.getElementById('teamAPoints').value;
+    var teamBPointsInput = document.getElementById('teamBPoints').value;
+    var teamAPoints = parseFloat(teamAPointsInput); // Parse the input value as a float
+    var teamBPoints = parseFloat(teamBPointsInput); // Parse the input value as a float
 
+    // Check if the parsed points are numbers
+    if (isNaN(teamAPoints) || isNaN(teamBPoints)) {
+        errorMessageDiv.textContent = "Error: Invalid team points. Please select two teams.";
+        return; // Exit the function if we don't have valid numbers
+    }
+
+    // Assuming 'matchType' is still manually entered or selected
+    var matchType = document.getElementById('matchType').value;
+
+    // Log the selected names and points for debugging
     console.log("Team A selected name:", teamAName);
     console.log("Team A selected points:", teamAPoints);
     console.log("Team B selected name:", teamBName);
     console.log("Team B selected points:", teamBPoints);
 
-
     // Calculate match scenarios
     var matchScenarios = calculateMatchScenarios(teamAName, teamAPoints, teamBName, teamBPoints, matchType);
     appendResults(teamAName, teamAPoints, teamBName, teamBPoints, matchType, matchScenarios);
     console.log('----- appendResults within performCalculation')
-
 }
+
 
 // Attach event listeners
 document.getElementById('calculateButton').addEventListener('click', performCalculation);
