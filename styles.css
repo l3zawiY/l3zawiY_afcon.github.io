@@ -1,3 +1,64 @@
+.content-wrapper {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+#fifaForm {
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#calculateButton, #clearResultsButton {
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#calculateButton:hover, #clearResultsButton:hover {
+    background-color: #0056b3;
+}
+
+#error-message {
+    color: red;
+    margin: 10px 0;
+}
+
+.result-card {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.result-card-header {
+    font-weight: bold;
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.result-scenario {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 10px;
+    }
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
