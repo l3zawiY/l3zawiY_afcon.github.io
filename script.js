@@ -4,11 +4,15 @@ let teamData = [];
 fetch('ranking.json')
   .then(response => response.json())
   .then(data => {
-      console.log("Loaded team data (first 3 teams):", data.slice(0, 3).map(team => ({ Team: team.Team, Points: team['Total Points'] })));
-      teamData = data;
-      initializeDropdowns();
+    console.log("Data fetched successfully");  
+    console.log("Loaded team data (first 3 teams):", data.slice(0, 3));
+    teamData = data;
+    initializeDropdowns();
   })
-  .catch(error => console.error('Error loading JSON data:', error));
+  .catch(error => {
+    console.error('Error loading JSON data:', error);
+    console.log("Fetch failed");
+});
 
 function initializeDropdowns() {
     const teamADropdown = document.getElementById('teamADropdown');
@@ -128,9 +132,9 @@ function getScenarioFull(scenarioKey, teamAName, teamBName) {
 function performCalculation() {
     // Retrieve selected team names and points
     var teamAName = document.getElementById('teamADropdown').value;
-    var teamAPointsInput = document.getElementById('teamAPoints'); // Define this variable
+    var teamAPointsInput = parseFloat(document.getElementById('teamAPoints').value); // Define this variable
     var teamBName = document.getElementById('teamBDropdown').value;
-    var teamBPointsInput = document.getElementById('teamBPoints'); // Define this variable
+    var teamBPointsInput = parseFloat(document.getElementById('teamBPoints').value); // Define this variable
 
     var teamAPoints = parseFloat(teamAPointsInput.value); // Use the defined variable
     var teamBPoints = parseFloat(teamBPointsInput.value); // Use the defined variable
