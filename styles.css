@@ -168,24 +168,27 @@ th:first-child {
   text-align: left; /* Align scenario text to the left */
 }
 
-#summary {
-    margin-bottom: 20px;
+footer {
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Optional shadow for a "lifted" effect */
+    font-size: 0.9rem; /* Slightly smaller font for the footer */
 }
 
-
-.win {
-    color: green;
+.app-header {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background for the header */
 }
 
-.lose {
-    color: red;
+.app-header h1 {
+    margin: 0;
+    color: #333; /* Dark color for the title text */
 }
 
-.gain {
-    color: green;
+.app-header .tagline {
+    margin: 0;
+    color: #666; /* Lighter color for the tagline text */
+    font-style: italic;
 }
-
-.loss {
-    color: red;
-}
-
