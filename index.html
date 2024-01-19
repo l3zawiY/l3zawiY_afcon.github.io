@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIFA Ranking Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <form id="fifaForm">
+
+        <label for="teamADropdown">Team A:</label>
+        <select id="teamADropdown"></select>
+
+        <label for="teamBDropdown">Team B:</label>
+        <select id="teamBDropdown"></select>
+
+        <input type="hidden" id="teamAPoints" name="teamAPoints">
+        <input type="hidden" id="teamBPoints" name="teamBPoints">
+
+
+        <!-- <label for="teamAName">Team A Name:</label>
+        <input type="text" id="teamAName" name="teamAName"><br>
+
+        <label for="teamAPoints">Team A Points:</label>
+        <input type="number" id="teamAPoints" name="teamAPoints"><br>
+
+        <label for="teamBName">Team B Name:</label>
+        <input type="text" id="teamBName" name="teamBName"><br>
+
+        <label for="teamBPoints">Team B Points:</label>
+        <input type="number" id="teamBPoints" name="teamBPoints"><br> -->
+
+        <label for="matchType">Type of Game:</label>
+        <select id="matchType" name="matchType">
+            <!-- <option value="friendly_outside_calendar">Friendly (Outside Calendar)</option>
+            <option value="friendly">Friendly</option>
+            <option value="nations_league_group">Nations League Group</option>
+            <option value="nations_league_playoff_final">Nations League Playoff/Final</option>
+            <option value="confederation_qualifier_world_cup_qualifier">Confederation Qualifier/World Cup Qualifier</option> -->
+            <option value="confederation_final_up_to_QF">Group Stage & Round of 16</option>
+            <option value="confederation_final_QF_onwards">Quarter Final Onwards</option>
+             <!--<option value="world_cup_final_up_to_QF">World Cup Final Up to QF</option>
+            <option value="world_cup_final_QF_onwards">World Cup Final QF Onwards</option> -->
+        </select><br>
+
+        <button type="button" id="calculateButton">Calculate</button>
+    </form>
+    <!-- <button type="button" id="fillTestDataButton">Fill Test Data</button> -->
+    <div id="summary"></div>
+    <div id="allResults"></div>
+<!--   
+    <table id="resultsTable">
+        <thead>
+            <tr>
+                <th>Scenario</th>
+                <th>Team A Points</th>
+                <th>Team B Points</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+-->
+    
+    <script src="script.js"></script>
+</body>
+</html>
