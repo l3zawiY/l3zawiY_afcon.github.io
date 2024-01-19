@@ -20,14 +20,7 @@ button {
 button:hover {
     background-color: darken(var(--primary-color), 10%);
 }
- 
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; /* high value to ensure it's on top */
-}
+
 
 .content-wrapper {
     max-width: 1000px;
@@ -37,13 +30,7 @@ header {
 
 }
 
-.section-container {
-    /* max-width: 1200px; */
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-}
+
 
 #fifaForm {
     display: flex;
@@ -212,12 +199,10 @@ th:first-child {
 
 footer {
     text-align: center;
-    width: 100%;
     box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Optional shadow for a "lifted" effect */
     font-size: 0.9rem; /* Slightly smaller font for the footer */
     background-color: var(--secondary-color);
     color: var(--text-color);
-    padding: 20px 0;
     border-top: 1px solid #ddd; /* subtle separation from content */
 }
 
@@ -227,8 +212,6 @@ footer p {
 
 .app-header {
     text-align: center;
-    padding: 20px;
-    /*background-color: #f8f9fa;  Light background for the header */
 }
 
 .app-header h1 {
