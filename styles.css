@@ -5,31 +5,35 @@
 }
 
 #fifaForm {
-    display: grid;
-    grid-template-columns: auto auto auto 1fr; /* 3 columns for the labels and dropdowns, 1fr for the buttons */
-    grid-template-rows: auto auto; /* Two rows, one for dropdowns, one for buttons */
-    gap: 10px; /* Adjust the gap as needed */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
-    background-color: #f8f9fa;
     padding: 20px;
+    margin-bottom: 20px;
+    gap: 10px;
+    background-color: #f8f9fa;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
 }
 
-#fifaForm label, #fifaForm select {
-    margin: 0; /* Remove default margins */
+#fifaForm > div {
+    flex: 1 1 auto;
 }
 
-#fifaForm button {
-    grid-column: 1 / -1; /* Span buttons across all columns */
-    justify-self: center; /* Center buttons in their cell */
-    width: 100%; /* Full width for buttons */
+#fifaForm label {
+    margin-right: 0.5em; /* Space between label and dropdown */
 }
 
-/* For the third dropdown to stay in the same line */
-#fifaForm select:last-child {
-    margin-right: 20px; /* Adjust as necessary to align with the buttons below */
+#fifaForm select {
+    flex: 1;
+}
+
+.buttons-container {
+    width: 100%; /* Full width to allow centering */
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
 #calculateButton, #clearResultsButton {
@@ -39,12 +43,13 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px; /* Space between the buttons and the dropdowns */
+    flex: 0 0 auto; /* Do not grow or shrink */
 }
 
 #calculateButton:hover, #clearResultsButton:hover {
     background-color: #0056b3;
 }
+
 
 #error-message {
     color: red;
@@ -98,10 +103,7 @@
 /* Adjustments for smaller screens */
 @media (max-width: 768px) {
     #fifaForm {
-        grid-template-columns: 1fr; /* Stack everything in one column on smaller screens */
-    }
-    #fifaForm button {
-        justify-self: stretch; /* Full width for buttons on smaller screens */
+        flex-direction: column;
     }
 }
 
