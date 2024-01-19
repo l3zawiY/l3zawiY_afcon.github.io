@@ -6,7 +6,8 @@
 
 #fifaForm {
     display: grid;
-    grid-template-columns: repeat(3, 1fr) auto; /* 3 equal columns for labels and selects, and auto for the button */
+    grid-template-columns: auto auto auto 1fr; /* 3 columns for the labels and dropdowns, 1fr for the buttons */
+    grid-template-rows: auto auto; /* Two rows, one for dropdowns, one for buttons */
     gap: 10px; /* Adjust the gap as needed */
     align-items: center;
     background-color: #f8f9fa;
@@ -21,8 +22,9 @@
 }
 
 #fifaForm button {
-    grid-column: span 4; /* Span buttons across all columns */
+    grid-column: 1 / -1; /* Span buttons across all columns */
     justify-self: center; /* Center buttons in their cell */
+    width: 100%; /* Full width for buttons */
 }
 
 /* For the third dropdown to stay in the same line */
@@ -32,12 +34,12 @@
 
 #calculateButton, #clearResultsButton {
     padding: 10px 20px;
-    margin-right: 10px;
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 10px; /* Space between the buttons and the dropdowns */
 }
 
 #calculateButton:hover, #clearResultsButton:hover {
@@ -99,16 +101,11 @@
         grid-template-columns: 1fr; /* Stack everything in one column on smaller screens */
     }
     #fifaForm button {
-        grid-column: 1; /* Reset span for buttons */
+        justify-self: stretch; /* Full width for buttons on smaller screens */
     }
 }
 
-/* Optional: Adjust the gap between form elements and buttons on smaller screens */
-@media (max-width: 768px) {
-    #fifaForm {
-        gap: 5px;
-    }
-}
+
 
 
 
