@@ -1,7 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+    --primary-color: #0056b3; /* A shade of blue */
+    --secondary-color: #f8f9fa; /* A light grey for backgrounds */
+    --text-color: #333; /* A dark grey for text */
+  }
+  
+  header, footer {
+    background-color: var(--secondary-color);
+  }
+  
+  button {
+    background-color: var(--primary-color);
+    color: white;
+    /* Add hover effect */
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: darken(var(--primary-color), 10%);
+  }
+  
+
 .content-wrapper {
     max-width: 1000px;
     margin: auto;
     padding: 20px;
+}
+
+.section-container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 #fifaForm {
@@ -88,7 +120,7 @@
 
 /* Specific styling for strong and em tags inside the header */
 .result-card-header strong {
-    font-weight: bold; /* This makes the team names bold */
+    font-weight: 700; /* This makes the team names bold */
 }
 
 .result-card-header em {
@@ -109,12 +141,8 @@
     }
 }
 
-
-
-
-
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
@@ -124,6 +152,11 @@ body {
     height: 100vh;
     background-color: #f5f5f5;
 }
+
+h1, h2, h3, .emphasis {
+    font-weight: 700; /* This selects the bold weight of Roboto */
+  }
+  
 
 form {
     margin-bottom: 20px;
@@ -151,7 +184,7 @@ table {
 
 th {
   background-color: #f2f2f2;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 td {
@@ -170,10 +203,17 @@ th:first-child {
 
 footer {
     text-align: center;
-    padding: 10px;
     width: 100%;
     box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Optional shadow for a "lifted" effect */
     font-size: 0.9rem; /* Slightly smaller font for the footer */
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 20px 0;
+    border-top: 1px solid #ddd; /* subtle separation from content */
+}
+
+footer p {
+    margin: 0; /* Remove default margins */
 }
 
 .app-header {
