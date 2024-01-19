@@ -4,6 +4,7 @@ let teamData = [];
 fetch('ranking.json')
   .then(response => response.json())
   .then(data => {
+      console.log("Loaded team data (first 3 teams):", data.slice(0, 3).map(team => ({ Team: team.Team, Points: team['Total Points'] })));
       teamData = data;
       initializeDropdowns();
   })
@@ -26,15 +27,19 @@ function initializeDropdowns() {
     // Update points when a team is selected
     teamADropdown.addEventListener('change', () => {
         let selectedTeam = teamData.find(team => team.Team === teamADropdown.value);
+        console.log("Selected team A:", selectedTeam); // Log the selected team object
         if (selectedTeam) {
-            document.getElementById('teamAPoints').value = selectedTeam['Total Points'];
+            document.getElementById('teamAPoints').value = parseFloat(selectedTeam['Total Points']).toFixed(2);
+            console.log("Team A points after selection:", selectedTeam['Total Points']); // Log the points
         }
     });
 
     teamBDropdown.addEventListener('change', () => {
         let selectedTeam = teamData.find(team => team.Team === teamBDropdown.value);
+        console.log("Selected team B:", selectedTeam); // Log the selected team object
         if (selectedTeam) {
-            document.getElementById('teamBPoints').value = selectedTeam['Total Points'];
+            document.getElementById('teamBPoints').value = parseFloat(selectedTeam['Total Points']).toFixed(2);
+            console.log("Team B points after selection:", selectedTeam['Total Points']); // Log the points
         }
     });
 }
@@ -93,6 +98,7 @@ function calculateMatchScenarios(teamAName, teamAPoints, teamBName, teamBPoints,
             [teamBName]: {'points_before': teamBPoints, 'points_after': teamBPoints + teamBChange, 'points_change': teamBChange}
         };
     });
+    console.log("Calculated match scenarios:", results);
     return results;
 }
 
@@ -131,10 +137,10 @@ function performCalculation() {
 
     var matchType = document.getElementById('matchType').value; // Assuming this is still manually entered or selected
 
-    console.log('Team A Dropdown:', teamADropdown);
-    console.log('Team A Points Input:', teamAPointsInput);
-    console.log('Team B Dropdown:', teamBDropdown);
-    console.log('Team B Points Input:', teamBPointsInput);
+    console.log("Team A selected name:", teamAName);
+    console.log("Team A selected points:", teamAPoints);
+    console.log("Team B selected name:", teamBName);
+    console.log("Team B selected points:", teamBPoints);
 
 
     // Calculate match scenarios
