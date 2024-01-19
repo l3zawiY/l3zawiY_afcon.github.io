@@ -46,6 +46,13 @@ function initializeDropdowns() {
             console.log("Team B points after selection:", selectedTeam['Total Points']); // Log the points
         }
     });
+
+    // Programmatically trigger the 'change' event for the first team
+    if (teamData.length > 0) {
+        teamADropdown.dispatchEvent(new Event('change'));
+        teamBDropdown.dispatchEvent(new Event('change'));
+    }
+    
 }
 
 
@@ -132,8 +139,18 @@ function getScenarioFull(scenarioKey, teamAName, teamBName) {
 function performCalculation() {
     // Retrieve selected team names and points
     var teamAName = document.getElementById('teamADropdown').value;
-    var teamAPointsInput = parseFloat(document.getElementById('teamAPoints').value); // Define this variable
     var teamBName = document.getElementById('teamBDropdown').value;
+
+    // Check if both selected teams are the same    
+    var errorMessageDiv = document.getElementById('error-message');
+    if (teamAName === teamBName) {
+        errorMessageDiv.textContent = "Error: The same team cannot play against itself.";
+        return; // Exit the function if the same team is selected
+    } else {
+        errorMessageDiv.textContent = ""; // Clear the error message if the teams are different
+    }
+
+    var teamAPointsInput = parseFloat(document.getElementById('teamAPoints').value); // Define this variable
     var teamBPointsInput = parseFloat(document.getElementById('teamBPoints').value); // Define this variable
 
     var teamAPoints = parseFloat(teamAPointsInput.value); // Use the defined variable
