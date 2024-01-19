@@ -5,11 +5,20 @@
 }
 
 #fifaForm {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px; /* Adjust the gap as needed */
     margin-bottom: 20px;
     background-color: #f8f9fa;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#fifaForm label, #fifaForm select, #fifaForm button {
+    flex: 1; /* Each form control will take equal width */
+    min-width: 120px; /* Prevents the controls from being too small */
 }
 
 #calculateButton, #clearResultsButton {
@@ -40,12 +49,34 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+/* General styling for the header of each result card */
 .result-card-header {
-    font-weight: bold;
     border-bottom: 1px solid #dee2e6;
     margin-bottom: 10px;
     padding-bottom: 5px;
 }
+
+/* Styling for the paragraphs inside the header */
+.result-card-header .simulation-info {
+    font-weight: normal; /* This is default and can be omitted */
+    margin: 0; /* Ensures there's no extra space around the paragraph */
+}
+
+.result-card-header .importance-info {
+    font-style: italic;
+    font-weight: normal; /* This is default and can be omitted */
+    margin: 0; /* Ensures there's no extra space around the paragraph */
+}
+
+/* Specific styling for strong and em tags inside the header */
+.result-card-header strong {
+    font-weight: bold; /* This makes the team names bold */
+}
+
+.result-card-header em {
+    font-style: italic; /* This could be used to make certain text italic, if needed */
+}
+
 
 .result-scenario {
     display: flex;
@@ -54,9 +85,20 @@
 }
 
 @media (max-width: 768px) {
+    #fifaForm {
+        flex-direction: column;
+    }
     .content-wrapper {
         padding: 10px;
     }
+    /* Ensure form elements stack vertically on smaller screens */
+    #fifaForm label, #fifaForm select, #fifaForm button {
+        flex: none; /* Override the flex property */
+        width: 100%; /* Full width for small screens */
+        max-width: none; /* Override any max-width */
+        margin-bottom: 10px; /* Add some space between controls */
+    }
+}
 }
 
 body {

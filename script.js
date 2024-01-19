@@ -182,16 +182,29 @@ document.getElementById('calculateButton').addEventListener('click', performCalc
 //document.getElementById('fillTestDataButton').addEventListener('click', fillTestData);
 
 
-function appendResults(teamAName, teamAPoints, teamBName, teamBPoints, matchType, matchScenarios) {
+function appendResults(teamAName, teamAPoints, teamBName, teamBPoints, matchType, matchScenarios) { 
     var resultsContainer = document.getElementById('results-container');
     var resultCard = document.createElement('div');
     resultCard.className = 'result-card';
 
-    // Create the header for the card
+    // Create the header for the card with improved formatting
+    var simulationInfo = document.createElement('p');
+    simulationInfo.innerHTML = `Simulation: <strong>${teamAName}</strong> (${teamAPoints.toFixed(2)} points before the game) VS <strong>${teamBName}</strong> (${teamBPoints.toFixed(2)} points before the game)`;
+    simulationInfo.className = 'simulation-info';
+
+    var importanceInfo = document.createElement('p');
+    importanceInfo.innerHTML = `Importance of match: I = ${calculateMatchImportance(matchType)}, ${matchType.replace(/_/g, ' ')}`;
+    importanceInfo.className = 'importance-info';
+
+    // Append the formatted text to the card header
     var header = document.createElement('div');
     header.className = 'result-card-header';
-    header.textContent = `Importance of match: I = ${calculateMatchImportance(matchType)}, ${matchType.replace(/_/g, ' ')} - ${teamAName}: beforeP = ${teamAPoints.toFixed(2)}, ${teamBName}: beforeP = ${teamBPoints.toFixed(2)}`;
+    header.appendChild(simulationInfo);
+    header.appendChild(importanceInfo);
+
+    // Append the header to the result card
     resultCard.appendChild(header);
+
 
     // Create the table for the scenarios
     var table = document.createElement('table');
