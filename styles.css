@@ -5,20 +5,29 @@
 }
 
 #fifaForm {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) auto; /* 3 equal columns for labels and selects, and auto for the button */
     gap: 10px; /* Adjust the gap as needed */
-    margin-bottom: 20px;
+    align-items: center;
     background-color: #f8f9fa;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
 }
 
-#fifaForm label, #fifaForm select, #fifaForm button {
-    flex: 1; /* Each form control will take equal width */
-    min-width: 120px; /* Prevents the controls from being too small */
+#fifaForm label, #fifaForm select {
+    margin: 0; /* Remove default margins */
+}
+
+#fifaForm button {
+    grid-column: span 4; /* Span buttons across all columns */
+    justify-self: center; /* Center buttons in their cell */
+}
+
+/* For the third dropdown to stay in the same line */
+#fifaForm select:last-child {
+    margin-right: 20px; /* Adjust as necessary to align with the buttons below */
 }
 
 #calculateButton, #clearResultsButton {
@@ -84,21 +93,23 @@
     padding: 5px 0;
 }
 
+/* Adjustments for smaller screens */
 @media (max-width: 768px) {
     #fifaForm {
-        flex-direction: column;
+        grid-template-columns: 1fr; /* Stack everything in one column on smaller screens */
     }
-    .content-wrapper {
-        padding: 10px;
-    }
-    /* Ensure form elements stack vertically on smaller screens */
-    #fifaForm label, #fifaForm select, #fifaForm button {
-        flex: none; /* Override the flex property */
-        width: 100%; /* Full width for small screens */
-        max-width: none; /* Override any max-width */
-        margin-bottom: 10px; /* Add some space between controls */
+    #fifaForm button {
+        grid-column: 1; /* Reset span for buttons */
     }
 }
+
+/* Optional: Adjust the gap between form elements and buttons on smaller screens */
+@media (max-width: 768px) {
+    #fifaForm {
+        gap: 5px;
+    }
+}
+
 
 
 body {
