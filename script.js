@@ -145,16 +145,13 @@ function performCalculation() {
     var errorMessageDiv = document.getElementById('error-message');
     errorMessageDiv.textContent = ''; // Clear any previous error message
     if (teamAName === teamBName) {
-        console.log("Same team");
         errorMessageDiv.textContent = "Error: The same team cannot play against itself.";
         return; // Exit the function if the same team is selected
     }
 
     // Define the variables for team points and parse them as floats from the input fields
-    var teamAPointsInput = document.getElementById('teamAPoints').value;
-    var teamBPointsInput = document.getElementById('teamBPoints').value;
-    var teamAPoints = parseFloat(teamAPointsInput); // Parse the input value as a float
-    var teamBPoints = parseFloat(teamBPointsInput); // Parse the input value as a float
+    var teamAPoints = parseFloat(document.getElementById('teamAPoints').value);
+    var teamBPoints = parseFloat(document.getElementById('teamBPoints').value);
 
     // Check if the parsed points are numbers
     if (isNaN(teamAPoints) || isNaN(teamBPoints)) {
@@ -176,6 +173,7 @@ function performCalculation() {
     appendResults(teamAName, teamAPoints, teamBName, teamBPoints, matchType, matchScenarios);
     console.log('----- appendResults within performCalculation')
 }
+
 
 
 // Attach event listeners
