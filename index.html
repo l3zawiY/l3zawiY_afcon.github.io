@@ -3,68 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FIFA Ranking Calculator</title>
+    <title>AFCON 2023 - FIFA Ranking Points Calculator</title>
+    <style>
+        .content-wrapper {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        
+        #fifaForm {
+            margin-bottom: 20px;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        #calculateButton, #clearResultsButton {
+            padding: 10px 20px;
+            margin-right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        #calculateButton:hover, #clearResultsButton:hover {
+            background-color: #0056b3;
+        }
+        
+        #error-message {
+            color: red;
+            margin: 10px 0;
+        }
+        
+        .result-card {
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            margin-top: 20px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .result-card-header {
+            font-weight: bold;
+            border-bottom: 1px solid #dee2e6;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+        }
+        
+        .result-scenario {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .content-wrapper {
+                padding: 10px;
+            }
+        }
+        </style>
+        
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <form id="fifaForm">
+    <div class="content-wrapper">
+        <form id="fifaForm">
 
-        <label for="teamADropdown">Team A:</label>
-        <select id="teamADropdown"></select>
+            <label for="teamADropdown">Team A:</label>
+            <select id="teamADropdown"></select>
 
-        <label for="teamBDropdown">Team B:</label>
-        <select id="teamBDropdown"></select>
+            <label for="teamBDropdown">Team B:</label>
+            <select id="teamBDropdown"></select>
 
-        <input type="hidden" id="teamAPoints" name="teamAPoints">
-        <input type="hidden" id="teamBPoints" name="teamBPoints">
+            <input type="hidden" id="teamAPoints" name="teamAPoints">
+            <input type="hidden" id="teamBPoints" name="teamBPoints">
 
+            <label for="matchType">Type of Game:</label>
+            <select id="matchType" name="matchType">
+                <!-- <option value="friendly_outside_calendar">Friendly (Outside Calendar)</option>
+                <option value="friendly">Friendly</option>
+                <option value="nations_league_group">Nations League Group</option>
+                <option value="nations_league_playoff_final">Nations League Playoff/Final</option>
+                <option value="confederation_qualifier_world_cup_qualifier">Confederation Qualifier/World Cup Qualifier</option> -->
+                <option value="confederation_final_up_to_QF">Group Stage & Round of 16</option>
+                <option value="confederation_final_QF_onwards">Quarter Final Onwards</option>
+                <!--<option value="world_cup_final_up_to_QF">World Cup Final Up to QF</option>
+                <option value="world_cup_final_QF_onwards">World Cup Final QF Onwards</option> -->
+            </select><br>
 
-        <!-- <label for="teamAName">Team A Name:</label>
-        <input type="text" id="teamAName" name="teamAName"><br>
-
-        <label for="teamAPoints">Team A Points:</label>
-        <input type="number" id="teamAPoints" name="teamAPoints"><br>
-
-        <label for="teamBName">Team B Name:</label>
-        <input type="text" id="teamBName" name="teamBName"><br>
-
-        <label for="teamBPoints">Team B Points:</label>
-        <input type="number" id="teamBPoints" name="teamBPoints"><br> -->
-
-        <label for="matchType">Type of Game:</label>
-        <select id="matchType" name="matchType">
-            <!-- <option value="friendly_outside_calendar">Friendly (Outside Calendar)</option>
-            <option value="friendly">Friendly</option>
-            <option value="nations_league_group">Nations League Group</option>
-            <option value="nations_league_playoff_final">Nations League Playoff/Final</option>
-            <option value="confederation_qualifier_world_cup_qualifier">Confederation Qualifier/World Cup Qualifier</option> -->
-            <option value="confederation_final_up_to_QF">Group Stage & Round of 16</option>
-            <option value="confederation_final_QF_onwards">Quarter Final Onwards</option>
-             <!--<option value="world_cup_final_up_to_QF">World Cup Final Up to QF</option>
-            <option value="world_cup_final_QF_onwards">World Cup Final QF Onwards</option> -->
-        </select><br>
-
-        <button type="button" id="calculateButton">Calculate</button>
-    </form>
-    <!-- <button type="button" id="fillTestDataButton">Fill Test Data</button> -->
+            <button type="button" id="calculateButton">Calculate</button>
+            <button type="button" id="clearResultsButton" style="display:none;">Clear Results</button>
+        </form>
     <div id="error-message"></div>
+    <!-- <div id="allResults"></div> -->
+    <div id="results-container"></div> <!-- Container for all results -->
 
-    <div id="summary"></div>
-    <div id="allResults"></div>
-<!--   
-    <table id="resultsTable">
-        <thead>
-            <tr>
-                <th>Scenario</th>
-                <th>Team A Points</th>
-                <th>Team B Points</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
--->
-    
+    </div>  
     <script src="script.js"></script>
 </body>
 </html>

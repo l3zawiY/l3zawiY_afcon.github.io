@@ -181,37 +181,40 @@ document.getElementById('calculateButton').addEventListener('click', performCalc
 //document.getElementById('fillTestDataButton').addEventListener('click', fillTestData);
 
 
-// This function appends the results of the current simulation to the 'allResults' div
 function appendResults(teamAName, teamAPoints, teamBName, teamBPoints, matchType, matchScenarios) {
-    var allResultsDiv = document.getElementById('allResults');
-    var resultsFragment = document.createDocumentFragment();
-    
-    var summaryDiv = document.createElement('div');
-    var importance = calculateMatchImportance(matchType);
-    summaryDiv.innerHTML = '<p><strong>Importance of match:</strong> I = ' + importance + ', ' + matchType.replace(/_/g, ' ') + '</p>'
-                         + '<p><strong>' + teamAName + ':</strong> beforeP = ' + teamAPoints.toFixed(2)
-                         + ', <strong>' + teamBName + ':</strong> beforeP = ' + teamBPoints.toFixed(2) + '</p>';
-    resultsFragment.appendChild(summaryDiv);
-    
-    var resultsTable = document.createElement('table');
-    var tbody = document.createElement('tbody');
+    var resultsContainer = document.getElementById('results-container');
+    var resultCard = document.createElement('div');
+    resultCard.className = 'result-card';
+
+    // Create the header for the card
+    var header = document.createElement('div');
+    header.className = 'result-card-header';
+    header.textContent = `Importance of match: I = ${calculateMatchImportance(matchType)}, ${matchType.replace(/_/g, ' ')} - ${teamAName}: beforeP = ${teamAPoints.toFixed(2)}, ${teamBName}: beforeP = ${teamBPoints.toFixed(2)}`;
+    resultCard.appendChild(header);
+
+    // Create the table for the scenarios
+    var table = document.createElement('table');
     Object.keys(matchScenarios).forEach(function(scenario) {
-        var row = tbody.insertRow();
+        var row = table.insertRow();
         var cellScenario = row.insertCell();
         var cellTeamAPoints = row.insertCell();
         var cellTeamBPoints = row.insertCell();
-        
+
         cellScenario.textContent = scenario.replace(/_/g, ' ');
         var teamAResult = matchScenarios[scenario][teamAName];
         var teamBResult = matchScenarios[scenario][teamBName];
-        cellTeamAPoints.innerHTML = (teamAResult.points_change >= 0 ? '+' : '') + teamAResult.points_change.toFixed(2) + ' (' + teamAResult.points_after.toFixed(2) + ')';
-        cellTeamBPoints.innerHTML = (teamBResult.points_change >= 0 ? '+' : '') + teamBResult.points_change.toFixed(2) + ' (' + teamBResult.points_after.toFixed(2) + ')';
+        cellTeamAPoints.textContent = formatPointsChange(teamAResult.points_change) + ' (' + teamAResult.points_after.toFixed(2) + ')';
+        cellTeamBPoints.textContent = formatPointsChange(teamBResult.points_change) + ' (' + teamBResult.points_after.toFixed(2) + ')';
     });
-    resultsTable.appendChild(tbody);
-    resultsFragment.appendChild(resultsTable);
-    
-    allResultsDiv.appendChild(resultsFragment);
+    resultCard.appendChild(table);
+
+    // Append the result card to the results container
+    resultsContainer.appendChild(resultCard);
+
+    // Show the clear results button
+    document.getElementById('clearResultsButton').style.display = 'block';
 }
+
 
 // Event listener for the 'Calculate' button
 document.getElementById('calculateButton').addEventListener('click', function() {
@@ -331,3 +334,9 @@ function populateTeamDropdowns(teams) {
     });
     
 }
+
+//Clear Results Button
+document.getElementById('clearResultsButton').addEventListener('click', function() {
+    document.getElementById('results-container').innerHTML = '';
+    this.style.display = 'none'; // Hide the button after clearing results
+});
