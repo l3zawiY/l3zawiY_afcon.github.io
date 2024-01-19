@@ -14,12 +14,28 @@ function initializeDropdowns() {
     const teamBDropdown = document.getElementById('teamBDropdown');
     teamData.forEach(team => {
         const option1 = document.createElement('option');
-        option1.value = option1.textContent = team.Team;  // Changed to match your JSON key
+        option1.value = option1.textContent = team.Team;
         teamADropdown.appendChild(option1);
 
         const option2 = document.createElement('option');
-        option2.value = option2.textContent = team.Team;  // Changed to match your JSON key
+        option2.value = option2.textContent = team.Team;
         teamBDropdown.appendChild(option2);
+    });
+
+
+    // Update points when a team is selected
+    teamADropdown.addEventListener('change', () => {
+        let selectedTeam = teamData.find(team => team.Team === teamADropdown.value);
+        if (selectedTeam) {
+            document.getElementById('teamAPoints').value = selectedTeam['Total Points'];
+        }
+    });
+
+    teamBDropdown.addEventListener('change', () => {
+        let selectedTeam = teamData.find(team => team.Team === teamBDropdown.value);
+        if (selectedTeam) {
+            document.getElementById('teamBPoints').value = selectedTeam['Total Points'];
+        }
     });
 }
 
@@ -101,21 +117,6 @@ function getScenarioFull(scenarioKey, teamAName, teamBName) {
     return scenariosFull[scenarioKey] || scenarioKey;
 }
 
-// Function to populate team dropdowns
-function populateTeamDropdowns(teams) {
-    const teamADropdown = document.getElementById('teamADropdown');
-    const teamBDropdown = document.getElementById('teamBDropdown');
-
-    // Clear existing options
-    teamADropdown.innerHTML = '';
-    teamBDropdown.innerHTML = '';
-
-    // Add each team to the dropdowns
-    teams.forEach(team => {
-        teamADropdown.add(new Option(team.Team, team.Team));
-        teamBDropdown.add(new Option(team.Team, team.Team));
-    });
-}
 
 // Function to perform the calculation and display the results
 function performCalculation() {
@@ -146,16 +147,6 @@ function performCalculation() {
 // Attach event listeners
 document.getElementById('calculateButton').addEventListener('click', performCalculation);
 //document.getElementById('fillTestDataButton').addEventListener('click', fillTestData);
-
-// Fetch teams data from the server and populate dropdowns
-fetch('/teams')
-    .then(response => response.json())
-    .then(teams => {
-        populateTeamDropdowns(teams);
-    })
-    .catch(error => console.error('Error fetching teams:', error));
-
-// ... (Include any other existing functions like fillTestData, appendResults, displaySummary, displayResultsTable) ...
 
 
 // This function appends the results of the current simulation to the 'allResults' div
@@ -267,17 +258,7 @@ function getScenarioFull(scenarioKey, teamAName, teamBName) {
     return scenariosFull[scenarioKey] || scenarioKey;
 }
 
-// Function to fill the form with test data for quick testing.
-function fillTestData() {
-    document.getElementById('teamAName').value = 'Morocco';
-    document.getElementById('teamAPoints').value = 1661.69;
-    document.getElementById('teamBName').value = 'Tanzania';
-    document.getElementById('teamBPoints').value = 1155.19;
-    document.getElementById('matchType').value = 'confederation_final_up_to_QF';
-}
 
-// Attach the fillTestData function to the test data button's click event listener.
-document.getElementById('fillTestDataButton').addEventListener('click', fillTestData);
 
 
 
@@ -318,11 +299,3 @@ function populateTeamDropdowns(teams) {
     });
     
 }
-
-// Fetch teams data from the server
-fetch('/teams')
-    .then(response => response.json())
-    .then(teams => {
-        populateTeamDropdowns(teams);
-    })
-    .catch(error => console.error('Error fetching teams:', error));
