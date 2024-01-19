@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded',function(){
 // Loading JSON Data and Initializing Dropdowns
 let teamData = [];
 
@@ -339,4 +340,6 @@ function populateTeamDropdowns(teams) {
 document.getElementById('clearResultsButton').addEventListener('click', function() {
     document.getElementById('results-container').innerHTML = '';
     this.style.display = 'none'; // Hide the button after clearing results
+});
+
 });
