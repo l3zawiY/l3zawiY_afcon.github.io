@@ -7,7 +7,7 @@
 #fifaForm {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 20px;
     margin-bottom: 20px;
@@ -18,15 +18,16 @@
 }
 
 #fifaForm > div {
-    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
 }
 
 #fifaForm label {
     margin-right: 0.5em; /* Space between label and dropdown */
 }
 
-#fifaForm select {
-    flex: 1;
+#fifaForm select, #fifaForm input[type="hidden"] {
+    min-width: 140px; /* Minimum width for dropdowns */
 }
 
 .buttons-container {
@@ -34,7 +35,9 @@
     display: flex;
     justify-content: center;
     gap: 10px;
+    margin-top: 20px; /* Space between form elements and buttons */
 }
+
 
 #calculateButton, #clearResultsButton {
     padding: 10px 20px;
@@ -43,7 +46,6 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    flex: 0 0 auto; /* Do not grow or shrink */
 }
 
 #calculateButton:hover, #clearResultsButton:hover {
