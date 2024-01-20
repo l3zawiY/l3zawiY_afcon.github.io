@@ -10,14 +10,13 @@
     <aside class="sidebar">
         <section id="introduction">
             <h1>Welcome, Football Enthusiasts!</h1>
-            <p>This is a fun experiment I put together for fellow football lovers. <br> Want to see how the next big game could tilt the scales? Here's a simple simulator based on FIFA's rankings to help us predict match outcomes.</p>
-            <p> How to use : Select two teams, set the match context, and let the data kick off the excitement!</p>
+            <p>This is a fun experiment I put together for fellow football lovers. Want to see how the next big game could tilt the scales? Here's a simple simulator based on FIFA's rankings to help us predict match outcomes and ponder on 'what-ifs'. Select two teams, set the match context, and let the data kick off the excitement!</p>
         </section>      
         <section id="feedback-cta">
             <p>Did you enjoy the simulation? I’d love to hear from you – whether it’s a high five or a suggestion for the next version. Share your thoughts <a href="mailto:youneslb2020+AfconSimulator@gmail.com">via email</a>.</p>
         </section>      
         <footer>
-            <p>Created by @Le3zawiy, a fan exploring how to bring data into our football conversations. w Dima Koukab !</p>
+            <p>Created by @Le3zawiy, a football fan exploring how to  – let’s bring data into our football conversations and predictions. Cheers, Le3zawiy!</p>
         </footer> 
     </aside>
     <main>
@@ -28,17 +27,19 @@
 
         <form id="fifaForm" class="form-container">
 
-            <label for="teamADropdown">Team A:</label>
-            <select id="teamADropdown"></select>
+            <select id="teamADropdown">
+                <option value="" disabled selected>Team A</option>
+            </select>
 
-            <label for="teamBDropdown">Team B:</label>
-            <select id="teamBDropdown"></select>
+            <select id="teamBDropdown">
+                <option value="" disabled selected>Team B</option>
+            </select>
 
             <input type="hidden" id="teamAPoints" name="teamAPoints">
             <input type="hidden" id="teamBPoints" name="teamBPoints">
 
-            <label for="matchType">Type of Game:</label>
             <select id="matchType" name="matchType">
+                <option value="" disabled selected>Type of Game</option>
                 <!-- <option value="friendly_outside_calendar">Friendly (Outside Calendar)</option>
                 <option value="friendly">Friendly</option>
                 <option value="nations_league_group">Nations League Group</option>
@@ -48,7 +49,7 @@
                 <option value="confederation_final_QF_onwards">Quarter Final Onwards</option>
                 <!--<option value="world_cup_final_up_to_QF">World Cup Final Up to QF</option>
                 <option value="world_cup_final_QF_onwards">World Cup Final QF Onwards</option> -->
-            </select><br>
+            </select>
 
             <div class="buttons-container">
                 <button type="button" id="calculateButton">Calculate</button>
@@ -57,6 +58,8 @@
         </form>
         <div id="error-message"></div>
         <div id="results-container"></div> <!-- Container for all results -->
+
+
     </main>
     <script src="script.js"></script>
 </body>

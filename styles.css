@@ -119,9 +119,42 @@ main {
     align-items: center;
 }
 
-#fifaForm label {
-    margin-right: 0.5em; /* Space between label and dropdown */
+#fifaForm select {
+    min-width: 140px; /* Minimum width for dropdowns */
+    padding: 10px; /* Make the dropdowns taller, easier to interact with */
+    border: 1px solid #ccc; /* Subtle border color */
+    border-radius: 5px; /* Match the border-radius with other elements */
+    background-color: white; /* Ensure the background is white for readability */
+    -webkit-appearance: none; /* Removes default styling particularly in iOS */
+    -moz-appearance: none; /* Removes default styling particularly in Firefox */
+    appearance: none; /* Removes default styling */
+    font-family: inherit; /* The dropdowns should inherit the font-family from the body */
+    font-size: 1rem; /* Adjust font size as needed */
+    color: #333; /* Text color for the options */
+    background-image: url('chevron16px.png'); /* A custom arrow image */
+    background-position: right 10px center; /* Position for the custom arrow image */
+    background-repeat: no-repeat; /* No repeat for the custom arrow image */
+    background-size: 16px 16px; /* Or the size to which you resized your icon */
+    -webkit-appearance: none; /* Removes default styling on WebKit browsers */
+    -moz-appearance: none; /* Removes default styling on Firefox */
+    appearance: none; /* Removes default styling */
+
+    margin-bottom: 20px; /* Space between each form element */
 }
+
+#fifaForm select:focus {
+    border-color: #0056b3; /* Highlight color when the dropdown is focused */
+    outline: none; /* Remove default focus outline */
+}
+
+.buttons-container {
+    width: 100%; /* Full width to allow centering */
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px; /* Space between form elements and buttons */
+}
+
 
 #fifaForm select, #fifaForm input[type="hidden"] {
     min-width: 140px; /* Minimum width for dropdowns */
