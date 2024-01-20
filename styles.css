@@ -258,7 +258,8 @@ main {
 /* This selector targets all <a> elements directly inside .result-card */
 .result-card > a {
     position: absolute;  /* Position absolutely within the parent .result-card */
-    bottom: 15px;       /* Position at the bottom with 10px offset */
+    bottom: 5px;       /* Position at the bottom with 10px offset */
+    right: 5px; /* Position the link from the right edge of the card */
     left: 50%;          /* Center horizontally */
     transform: translateX(-50%); /* Offset by half of its own width to center */
     text-align: center;
