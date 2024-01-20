@@ -173,11 +173,6 @@ function performCalculation() {
     var teamAPoints = parseFloat(document.getElementById('teamAPoints').value);
     var teamBPoints = parseFloat(document.getElementById('teamBPoints').value);
 
-    // Check if the parsed points are numbers
-    if (isNaN(teamAPoints) || isNaN(teamBPoints)) {
-        errorMessageDiv.textContent = "Error: Invalid team points. Please select two teams.";
-        return; // Exit the function if we don't have valid numbers
-    }
 
     // Log the selected names and points for debugging
     console.log("Team A selected name:", teamAName);
