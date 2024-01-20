@@ -204,6 +204,15 @@ function appendResults(teamAName, teamAPoints, teamBName, teamBPoints, matchType
     var resultCard = document.createElement('div');
     resultCard.className = 'result-card';
 
+    // Give the result card a unique ID
+    var uniqueId = 'resultCard-' + Date.now();
+    resultCard.id = uniqueId;
+    
+    // Append the new simulation link to the result card
+    var newSimulationLink = createNewSimulationLink();
+    resultCard.appendChild(newSimulationLink);
+  
+
     // Create the header for the card with improved formatting
     var simulationInfo = document.createElement('p');
     simulationInfo.innerHTML = `Simulation: <strong>${teamAName}</strong> (${teamAPoints.toFixed(2)} points before the game) VS <strong>${teamBName}</strong> (${teamBPoints.toFixed(2)} points before the game)`;
@@ -244,6 +253,8 @@ function appendResults(teamAName, teamAPoints, teamBName, teamBPoints, matchType
 
     // Show the clear results button
     document.getElementById('clearResultsButton').style.display = 'block';
+    document.getElementById(uniqueId).scrollIntoView({ behavior: 'smooth' });
+
 }
 
 
@@ -373,3 +384,20 @@ document.getElementById('clearResultsButton').addEventListener('click', function
 });
 
 });
+
+// Function to scroll to the top of the page
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  
+  // Function to create a new simulation link
+  function createNewSimulationLink() {
+    var link = document.createElement('a');
+    link.href = "#"; // Although the default action will be prevented, it's good practice to have the href attribute.
+    link.textContent = "New simulation";
+    link.addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent the default anchor action
+      scrollToTop();
+    });
+    return link;
+  }

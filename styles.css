@@ -253,6 +253,24 @@ main {
     font-style: italic; /* This could be used to make certain text italic, if needed */
 }
 
+/* This selector targets all <a> elements directly inside .result-card */
+.result-card > a {
+    display: block;
+    text-align: center;
+    font-size: 0.5rem; /* Smaller font size for 'minuscule' appearance */
+    color: #5ba8fa; /* Or any color that suits your design */
+    text-decoration: none; /* Optional: removes underline */
+    padding: 5px; /* To increase click area without increasing font size */
+    opacity: 0.6; /* Reduce opacity to make it less obtrusive */
+    margin-top: 10px; /* Adds space above the link */
+    transition: opacity 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  /* Hover effect for the link */
+  .result-card > a:hover {
+    opacity: 1; /* Full opacity on hover */
+  }
+  
 
 .result-scenario {
     display: flex;
