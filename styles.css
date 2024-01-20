@@ -222,6 +222,7 @@ main {
     border-radius: 5px;
     margin-top: 20px;
     padding: 15px;
+    padding-bottom: 30px; /* Increase padding at the bottom */
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: relative;
 }
@@ -257,7 +258,7 @@ main {
 /* This selector targets all <a> elements directly inside .result-card */
 .result-card > a {
     position: absolute;  /* Position absolutely within the parent .result-card */
-    bottom: 10px;       /* Position at the bottom with 10px offset */
+    bottom: 15px;       /* Position at the bottom with 10px offset */
     left: 50%;          /* Center horizontally */
     transform: translateX(-50%); /* Offset by half of its own width to center */
     text-align: center;
