@@ -4,20 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AFCON 2023 - FIFA Ranking Points Calculator</title>
-        
     <link rel="stylesheet" href="styles.css">  
 </head>
 <body>
-    <header class="app-header section-container">
-        <h1>AFCON 2023 Match Outcome Simulator</h1>
-        <p class="tagline">Explore the "what-ifs" of football matches with a simple click.</p>
-    </header>
-    <section id="introduction" class="section-container">
-        <h2>Welcome, Football Enthusiasts!</h2>
-        <p>This is a fun experiment I put together for fellow football lovers. Want to see how the next big game could tilt the scales? Here's a simple simulator based on FIFA's rankings to help us predict match outcomes and ponder on 'what-ifs'. Select two teams, set the match context, and let the data kick off the excitement!</p>
-    </section>      
-    <div class="content-wrapper">
-        <form id="fifaForm">
+    <aside class="sidebar">
+        <section id="introduction">
+            <h1>Welcome, Football Enthusiasts!</h1>
+            <p>This is a fun experiment I put together for fellow football lovers. <br> Want to see how the next big game could tilt the scales? Here's a simple simulator based on FIFA's rankings to help us predict match outcomes.</p>
+            <p> How to use : Select two teams, set the match context, and let the data kick off the excitement!</p>
+        </section>      
+        <section id="feedback-cta">
+            <p>Did you enjoy the simulation? I’d love to hear from you – whether it’s a high five or a suggestion for the next version. Share your thoughts <a href="mailto:youneslb2020+AfconSimulator@gmail.com">via email</a>.</p>
+        </section>      
+        <footer>
+            <p>Created by @Le3zawiy, a fan exploring how to bring data into our football conversations. w Dima Koukab !</p>
+        </footer> 
+    </aside>
+    <main>
+        <header class="app-header">
+            <h1>AFCON 2023 Match Outcome Simulator</h1>
+            <p class="tagline">Explore the "what-ifs" of football matches with a simple click.</p>
+        </header>
+
+        <form id="fifaForm" class="form-container">
 
             <label for="teamADropdown">Team A:</label>
             <select id="teamADropdown"></select>
@@ -47,15 +56,9 @@
             </div>
         </form>
         <div id="error-message"></div>
-        <!-- <div id="allResults"></div> -->
         <div id="results-container"></div> <!-- Container for all results -->
-    </div>
-    <aside id="feedback-cta" class="section-container">
-        <p>Did you enjoy the simulation? I’d love to hear from you – whether it’s a high five or a suggestion for the next version. Share your thoughts <a href="mailto:youneslb2020+AfconSimulator@gmail.com">via email</a> and let’s make this even more interesting!</p>
-    </aside>      
-    <footer class="section-container">
-        <p>Created by a football enthusiast for enthusiasts – let’s bring data into our football conversations and predictions. Cheers, Le3zawiy!</p>
-    </footer>        
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
+

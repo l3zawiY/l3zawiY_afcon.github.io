@@ -1,13 +1,103 @@
+/* Import PT Sans font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
 
-
-
-.content-wrapper {
-    max-width: 1000px;
-    margin: auto;
-    padding: 20px;
-    padding-top: 70px; /* height of your header plus some extra space */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+    font-size: 20px; /* Default font size for the whole webpage */
 
 }
+
+/* Base styles for sidebar */
+.sidebar {
+    font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+    padding: 2rem 1rem;
+    color: rgba(255,255,255,.5);
+    background-color: #202020;
+    position: fixed; /* Fixed position on larger screens */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 22rem; /* Fixed width for the sidebar */
+    text-align: left;
+    overflow-y: auto; /* Allows scrolling if content overflows */
+    display: flex; /* Use flexbox for positioning */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: flex-end; /* Align content to the bottom */
+
+}
+
+
+
+/* Styles for the h1 inside the introduction section */
+#introduction h1 {
+    font-size: 2em; /* Larger font size for the heading */
+    color: #fff; /* White color text for the heading */
+}
+
+/* Styles for paragraphs inside the introduction section */
+#introduction p {
+    font-size: 1em; /* Default font size for the paragraph */
+}
+
+/* Styles for the feedback call-to-action section */
+#feedback-cta {
+    font-size: 16px; /* Smaller font size for the feedback CTA */
+}
+
+#feedback-cta a {
+    color: #fff; /* White color for email link */
+    text-decoration: underline; /* Underline to signify it's clickable */
+}
+
+/* Styles for the footer */
+footer {
+    font-size: 14px; /* Smaller font size for the footer */
+    font-style: italic; /* Italic font style for the footer */
+    color: rgba(255,255,255,.75); /* Slightly brighter text color for footer for better readability */
+}
+
+
+/* On smaller screens, we allow the sidebar content to flow in the normal document flow */
+@media (max-width: 768px) {
+    .sidebar {
+        position: relative; /* Resets to default position */
+        width: auto; /* Takes the full width of the screen */
+    }
+
+    #introduction h1 {
+        font-size: 1.2em; /* Smaller font size for mobile */
+    }
+
+    #introduction p,
+    #feedback-cta{
+        font-size: 0.75em; /* Adjust font size for mobile */
+    }
+
+    footer {
+        font-size: 0.6em; /* Adjust font size for mobile */
+    }
+
+    #feedback-cta a {
+        font-size: inherit; /* Ensures font size is consistent with the surrounding text */
+    }
+}
+
+main {
+    /* Assuming main content should start after the sidebar */
+    margin-left: 22rem; /* Same width as the sidebar */
+    margin-right: 4rem;
+    padding: 4rem; /* Consistent padding with sidebar */
+}
+
+/* Adjusting main content for smaller screens */
+@media (max-width: 768px) {
+    main {
+        margin-left: 0; /* No sidebar on the left */
+    }
+}
+
 
 
 
