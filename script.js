@@ -138,13 +138,32 @@ function getScenarioFull(scenarioKey, teamAName, teamBName) {
 
 // Function to perform the calculation and display the results
 function performCalculation() {
-    // Retrieve selected team names
-    var teamAName = document.getElementById('teamADropdown').value;
-    var teamBName = document.getElementById('teamBDropdown').value;
-
-    // Check if both selected teams are the same    
+    var teamADropdown = document.getElementById('teamADropdown');
+    var teamBDropdown = document.getElementById('teamBDropdown');
+    var matchTypeDropdown = document.getElementById('matchType');
     var errorMessageDiv = document.getElementById('error-message');
-    errorMessageDiv.textContent = ''; // Clear any previous error message
+
+    // Clear any previous error message
+    errorMessageDiv.textContent = '';
+
+    // Retrieve selected team names and matchType
+    var teamAName = teamADropdown.value;
+    var teamBName = teamBDropdown.value;
+    var matchType = matchTypeDropdown.value;
+
+    // Check if both teams are selected
+    if (!teamAName || !teamBName) {
+        errorMessageDiv.textContent = 'Please select both teams.';
+        return;
+    }
+
+    // Check if a type of game is selected
+    if (!matchType) {
+        errorMessageDiv.textContent = 'Please select a type of game.';
+        return;
+    }
+
+    // Check if both selected teams are the same
     if (teamAName === teamBName) {
         errorMessageDiv.textContent = "Error: The same team cannot play against itself.";
         return; // Exit the function if the same team is selected
@@ -160,9 +179,6 @@ function performCalculation() {
         return; // Exit the function if we don't have valid numbers
     }
 
-    // Assuming 'matchType' is still manually entered or selected
-    var matchType = document.getElementById('matchType').value;
-
     // Log the selected names and points for debugging
     console.log("Team A selected name:", teamAName);
     console.log("Team A selected points:", teamAPoints);
@@ -173,6 +189,12 @@ function performCalculation() {
     var matchScenarios = calculateMatchScenarios(teamAName, teamAPoints, teamBName, teamBPoints, matchType);
     appendResults(teamAName, teamAPoints, teamBName, teamBPoints, matchType, matchScenarios);
     console.log('----- appendResults within performCalculation')
+
+    // Reset dropdowns to show default options after calculation
+    teamADropdown.selectedIndex = 0;
+    teamBDropdown.selectedIndex = 0;
+    matchTypeDropdown.selectedIndex = 0;
+    
 }
 
 
