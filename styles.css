@@ -223,6 +223,7 @@ main {
     margin-top: 20px;
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
 }
 
 /* General styling for the header of each result card */
@@ -255,21 +256,28 @@ main {
 
 /* This selector targets all <a> elements directly inside .result-card */
 .result-card > a {
-    display: block;
+    position: absolute;  /* Position absolutely within the parent .result-card */
+    bottom: 10px;       /* Position at the bottom with 10px offset */
+    left: 50%;          /* Center horizontally */
+    transform: translateX(-50%); /* Offset by half of its own width to center */
     text-align: center;
-    font-size: 0.5rem; /* Smaller font size for 'minuscule' appearance */
-    color: #5ba8fa; /* Or any color that suits your design */
-    text-decoration: none; /* Optional: removes underline */
-    padding: 5px; /* To increase click area without increasing font size */
-    opacity: 0.6; /* Reduce opacity to make it less obtrusive */
-    margin-top: 10px; /* Adds space above the link */
+    font-size: 0.75rem; /* Slightly larger font size for readability */
+    color: #007bff;     /* Bootstrap's default link color for consistency */
+    text-decoration: underline; /* Traditional link underline */
+    padding: 5px;       /* To increase click area without increasing font size */
+    background: none;   /* Ensure no background to maintain minuscule appearance */
+    border: none;       /* No border */
+    cursor: pointer;    /* Cursor to indicate it's clickable */
+    opacity: 0.7;       /* Slightly transparent to be less obtrusive */
     transition: opacity 0.3s; /* Smooth transition for hover effect */
   }
   
   /* Hover effect for the link */
   .result-card > a:hover {
     opacity: 1; /* Full opacity on hover */
+    text-decoration: none; /* Optional: removes underline on hover for a modern look */
   }
+  
   
 
 .result-scenario {
